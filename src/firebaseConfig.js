@@ -1,6 +1,5 @@
-import firebase from "firebase";
-import "firebase/auth";
-
+//import firebase from "firebase";
+import { initializeApp } from "firebase/app";
 const config = {
   apiKey: "AIzaSyC4_v4J_NkVhqoyg2Dowf8X6lsvsuBLdOw",
   authDomain: "login-2cccf.firebaseapp.com",
@@ -9,5 +8,5 @@ const config = {
   messagingSenderId: "81918442804",
   appId: "1:81918442804:web:965f88c8b50635882eb961",
 };
-const app = firebase.initializeApp(config);
+const app = initializeApp(config);
 export default app;
