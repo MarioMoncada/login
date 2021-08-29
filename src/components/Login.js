@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import app from "../firebaseConfig";
+import "../firebaseConfig";
 import {
   getAuth,
   signInWithPopup,
@@ -17,11 +17,14 @@ class Login extends Component {
       email: "",
       password: "",
       userLogged: "",
+      error: "",
     };
     this.handleUserSubmit = this.handleUserSubmit.bind(this);
     this.handleStateEmail = this.handleStateEmail.bind(this);
     this.handleStatePassword = this.handleStatePassword.bind(this);
     this.loggOut = this.loggOut.bind(this);
+    this.loginWithGoogle = this.loginWithGoogle.bind(this);
+    this.loginFace = this.loginFace.bind(this);
   }
 
   handleStateEmail = (e) => {
@@ -56,7 +59,11 @@ class Login extends Component {
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
-        console.log(error.message);
+        console.log(errorMessage);
+        console.log(errorCode);
+        this.setState(() => ({
+          error: errorMessage,
+        }));
       });
   }
   loggOut() {
@@ -74,30 +81,26 @@ class Login extends Component {
         // An error happened.
       });
   }
-  loginWithGoogle(e) {
+  loginWithGoogle() {
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-
-        // ...
+        console.log(user);
         this.setState(() => ({
           userLogged: user,
         }));
+
+        // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+
+        this.setState(() => ({
+          error: errorMessage,
+        }));
       });
   }
   loginFace() {
@@ -105,10 +108,10 @@ class Login extends Component {
     const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         // The signed-in user info.
+        console.log(token, "token");
         const user = result.user;
         // ...
         console.log(user);
@@ -117,28 +120,30 @@ class Login extends Component {
         }));
       })
       .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
-        // ...
+
+        console.log(errorMessage);
+
+        this.setState(() => ({
+          error: errorMessage,
+        }));
       });
   }
 
   render() {
     const isLoggedIn = this.state.userLogged;
+    const error = this.state.error;
+
     return (
       <div>
+        {/* eslint-disable */}
         {isLoggedIn == "" && (
           <div className="card  w-50 m-auto mt-5">
             <div className="card-header bg-secondary text-light text-center">
               LOGIN
             </div>
             <div className="card-body  ">
-              <h5 className="card-title">Inicie sesión {isLoggedIn.email}</h5>
+              <h5 className="card-title">Inicie sesión </h5>
 
               <div>
                 <form>
@@ -179,12 +184,18 @@ class Login extends Component {
         {isLoggedIn !== "" && isLoggedIn !== 0 && (
           <div className="alert alert-danger">
             <h1>
-              Hola {this.state.userLogged.email} Estamos felices de tenerte de
-              vuelta
+              Hola {isLoggedIn.displayName}
+              {isLoggedIn.email}
+              Estamos felices de tenerte de vuelta
             </h1>
             <button className="btn btn-danger ml-5" onClick={this.loggOut}>
               Logout
             </button>
+          </div>
+        )}
+        {error !== "" && (
+          <div className="alert alert-danger">
+            <p>El email ya esta registrado verifique su email</p>
           </div>
         )}
       </div>
