@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/login.git/static/css/main.a617e044.chunk.css",
-    "main.js": "/login.git/static/js/main.80079856.chunk.js",
-    "main.js.map": "/login.git/static/js/main.80079856.chunk.js.map",
+    "main.js": "/login.git/static/js/main.aecc0029.chunk.js",
+    "main.js.map": "/login.git/static/js/main.aecc0029.chunk.js.map",
     "runtime-main.js": "/login.git/static/js/runtime-main.99e34dae.js",
     "runtime-main.js.map": "/login.git/static/js/runtime-main.99e34dae.js.map",
     "static/css/2.818011ed.chunk.css": "/login.git/static/css/2.818011ed.chunk.css",
-    "static/js/2.799e9d28.chunk.js": "/login.git/static/js/2.799e9d28.chunk.js",
-    "static/js/2.799e9d28.chunk.js.map": "/login.git/static/js/2.799e9d28.chunk.js.map",
+    "static/js/2.8572276c.chunk.js": "/login.git/static/js/2.8572276c.chunk.js",
+    "static/js/2.8572276c.chunk.js.map": "/login.git/static/js/2.8572276c.chunk.js.map",
     "static/js/3.4e766dc6.chunk.js": "/login.git/static/js/3.4e766dc6.chunk.js",
     "static/js/3.4e766dc6.chunk.js.map": "/login.git/static/js/3.4e766dc6.chunk.js.map",
     "index.html": "/login.git/index.html",
     "static/css/2.818011ed.chunk.css.map": "/login.git/static/css/2.818011ed.chunk.css.map",
     "static/css/main.a617e044.chunk.css.map": "/login.git/static/css/main.a617e044.chunk.css.map",
-    "static/js/2.799e9d28.chunk.js.LICENSE.txt": "/login.git/static/js/2.799e9d28.chunk.js.LICENSE.txt"
+    "static/js/2.8572276c.chunk.js.LICENSE.txt": "/login.git/static/js/2.8572276c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.99e34dae.js",
     "static/css/2.818011ed.chunk.css",
-    "static/js/2.799e9d28.chunk.js",
+    "static/js/2.8572276c.chunk.js",
     "static/css/main.a617e044.chunk.css",
-    "static/js/main.80079856.chunk.js"
+    "static/js/main.aecc0029.chunk.js"
   ]
 }
